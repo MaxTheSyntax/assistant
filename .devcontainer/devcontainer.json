@@ -21,6 +21,5 @@
       "label": "Desktop (noVNC)",
       "onAutoForward": "notify"
     }
-  },
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y libgtk-3-dev libgcrypt20-dev libmpfr-dev libpcre3-dev libsecret-1-dev"
+  }
 }
