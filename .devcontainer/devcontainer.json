@@ -1,25 +1,36 @@
 {
-  "name": "Flutter Desktop Lite",
-  "image": "mcr.microsoft.com/devcontainers/python:3.11-bullseye", 
-  "features": {
-    "ghcr.io/devcontainers/features/desktop-lite:1": {
-      "version": "latest"
-    }
-  },
-  "extensions": [
-		"dart-code.dart-code",
-		"dart-code.flutter"
-	],
-  "overrideCommand": false,
-  "remoteEnv": {
-    "DISPLAY": ":1",
-    "LIBGL_ALWAYS_SOFTWARE": "1"
-  },
-  "forwardPorts": [6080],
-  "portsAttributes": {
-    "6080": {
-      "label": "Desktop (noVNC)",
-      "onAutoForward": "notify"
-    }
-  }
+    "build": {
+        "dockerfile": "./Dockerfile",
+        "context": "."
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": "true",
+            "username": "vscode",
+            "userUid": "1000",
+            "userGid": "1000",
+            "upgradePackages": "true"
+        },
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "latest",
+            "ppa": "false"
+        },
+        "ghcr.io/devcontainers/features/desktop-lite:1": {
+            "version": "latest"
+        }
+    },
+    "extensions": [
+        "dart-code.dart-code",
+        "dart-code.flutter"
+    ],
+    "forwardPorts": [
+        6080
+    ],
+    "portsAttributes": {
+        "6080": {
+            "label": "Desktop (noVNC)",
+            "onAutoForward": "notify"
+        }
+    },
+    "remoteUser": "vscode"
 }
