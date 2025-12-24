@@ -4,11 +4,12 @@
   "features": {
     "ghcr.io/devcontainers/features/desktop-lite:1": {
       "version": "latest"
-    },
-    "ghcr.io/community-managed-features/flutter:1": {
-      "version": "latest"
     }
   },
+  "extensions": [
+		"dart-code.dart-code",
+		"dart-code.flutter"
+	],
   "overrideCommand": false,
   "remoteEnv": {
     "DISPLAY": ":1",
