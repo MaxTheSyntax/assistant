@@ -1,16 +1,23 @@
 {
-  "name": "Python Desktop Lite",
+  "name": "Python Desktop Lite + Flutter",
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
   "features": {
     "ghcr.io/devcontainers/features/desktop-lite:1": {
       "version": "latest"
     }
   },
-  "forwardPorts": [6080],
+  "forwardPorts": [
+    6080
+  ],
   "portsAttributes": {
     "6080": {
       "label": "Desktop (noVNC)",
       "onAutoForward": "notify"
     }
-  }
+  },
+  "containerEnv": {
+    "PATH": "/usr/local/flutter/bin:${PATH}"
+  },
+  "postCreateCommand": "apt-get update && apt-get install -y --no-install-recommends git curl unzip xz-utils libglu1 || true && if [ ! -d /usr/local/flutter ]; then git clone -b stable https://github.com/flutter/flutter.git /usr/local/flutter && chmod -R a+rX /usr/local/flutter; fi && /usr/local/flutter/bin/flutter --version || true && /usr/local/flutter/bin/flutter doctor --no-fuchsia || true",
+  "postStartCommand": "/usr/local/flutter/bin/flutter precache --android --linux || true"
 }
